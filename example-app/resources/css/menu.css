@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Estilos de la barra de encabezado */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1001;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .toggle-btn {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.header .toggle-btn:hover {
+    background-color: #1a252f;
+    border-radius: 4px;
+}
+
+.header .toggle-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: #ecf0f1;
+}
+
+.header .titulo-pagina {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Estilos del menú lateral */
+.sidebar {
+    position: fixed;
+    top: 60px; /* Debe estar debajo de la barra de encabezado */
+    left: -250px; /* Oculto por defecto */
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding-top: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar .logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+    background-color: #34495e;
+}
+
+.sidebar ul li svg {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    fill: #ecf0f1;
+}
+
+.sidebar ul li.salir:hover {
+    background-color: #d32f2f;
+}
+
+.sidebar ul li.salir svg {
+    margin-right: 8px;
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+/* Contenido Principal */
+.content {
+    margin-top: 60px;
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    width: 100%;
+    position: relative; /* Para posicionamiento relativo del contenido */
+}
+
+.sidebar.active ~ .content {
+    margin-left: 250px;
+}
+
+/* Tabla de Registros */
+.tabla-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin-top: 20px;
+    position: relative; /* Para contener el botón absoluto */
+}
+
+.tabla-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.tabla-registros {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-registros th,
+.tabla-registros td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.tabla-registros th {
+    background-color: #2980b9;
+    color: white;
+}
+
+.tabla-registros tr:nth-child(even) {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.tabla-registros tr:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+.codigo-qr {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #e67e22;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.codigo-qr:hover {
+    background-color: #d35400;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.logo2 {
+    width: 50px;
+    height: auto;
+    margin-left: 20px;
+}
+
+/* Botón de Añadir Registro */
+.add-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.add-button:hover {
+    transform: scale(1.1);
+}
+
+.add-button svg {
+    width: 24px;
+    height: 24px;
+    fill: #2c3e50;
+    transition: fill 0.3s;
+}
+
+.add-button:hover svg {
+    fill: #2980b9;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .sidebar.active ~ .content {
+        margin-left: 250px;
+    }
+}
+
+/* Estilos para el botón de logout */
+.logout-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.logout-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Hace el icono blanco */
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.logout-button span {
+    color: white;
+    font-size: 14px;
+    /* Ajusta el tamaño del texto si es necesario */
+}

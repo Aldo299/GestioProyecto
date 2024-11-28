@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Estilos de la barra de encabezado */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1001;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .toggle-btn {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.header .toggle-btn:hover {
+    background-color: #1a252f;
+    border-radius: 4px;
+}
+
+.header .toggle-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.header .titulo-pagina {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Estilos del menú lateral */
+.sidebar {
+    position: fixed;
+    top: 60px; 
+    left: -250px; 
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding-top: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+.sidebar .logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+    background-color: #34495e;
+}
+
+.sidebar ul li img {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar ul li.salir:hover {
+    background-color: #d32f2f;
+}
+
+.sidebar ul li.salir img {
+    margin-right: 8px;
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+/* Contenido Principal */
+.content {
+    margin-top: 60px; 
+    margin-left: 250px; 
+    padding: 20px;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.active ~ .content {
+    margin-left: 250px;
+}
+
+/* Estilos del Contenedor de Perfil */
+.perfil-container {
+    background-color: #2c3e50; 
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.perfil-container .titulo {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #e0e0e0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.image-preview {
+    margin: 10px auto; 
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px; 
+    border: 2px solid #ccc;
+}
+
+/* Estilos para los mensajes de éxito y error */
+#mensaje {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+.mensaje-exito {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.mensaje-error {
+    background-color: #f44336; 
+    color: white;
+}
+
+/* Botones Reemplazados por Botones con Íconos */
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+/* Estilos para los botones de íconos */
+.icon {
+    background: none; 
+    border: none;   
+    padding: 0;      
+    cursor: pointer;  
+    transition: transform 0.2s ease, opacity 0.2s ease; 
+    outline: none;   
+}
+
+.icon img {
+    width: 30px; 
+    height: 30px;
+    display: block; 
+}
+
+.icon:hover img {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+
+.icon:focus img {
+    box-shadow: 0 0 0 2px #2980b9; 
+    border-radius: 4px;       
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.logo2 {
+    width: 50px;
+    height: auto;
+    margin-left: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px; 
+    }
+
+    .sidebar.active {
+        left: 0; 
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .sidebar.active ~ .content {
+        margin-left: 0; 
+    }
+}
+
+@media (max-width: 600px) {
+    .perfil-container {
+        padding: 20px;
+    }
+
+    .buttons {
+        justify-content: flex-end; 
+        flex-direction: column;    
+        gap: 10px;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+        margin-left: 0;
+        margin-bottom: 10px; 
+    }
+
+    .icon:last-child {
+        margin-bottom: 0; 
+    }
+
+    .image-preview {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+/* Estilos para el botón de logout */
+.logout-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.logout-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Hace el icono blanco */
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.logout-button span {
+    color: white;
+    font-size: 14px;
+    /* Ajusta el tamaño del texto si es necesario */
+}
