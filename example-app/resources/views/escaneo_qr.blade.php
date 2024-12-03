@@ -22,6 +22,19 @@
 
         let qrScanner;
 
+        const toggleBtn = document.querySelector(".toggle-btn");
+            const sidebar = document.querySelector(".sidebar");
+
+            toggleBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("active");
+                // Ajustar el margen del contenido según el estado del sidebar
+                if (sidebar.classList.contains("active")) {
+                    document.querySelector(".content").style.marginLeft = "250px";
+                } else {
+                    document.querySelector(".content").style.marginLeft = "0";
+                }
+            });
+
         botonEscaneo.addEventListener('click', () => {
             botonEscaneo.style.display = 'none';
             iniciarEscaneo();
@@ -52,10 +65,9 @@
             if (registro) {
                 // Mostrar la información del usuario y la bicicleta
                 resultadoNoControl.value = registro.noControl || 'N/A';
-                resultadoColor.value = registro.color || 'N/A';
+                resultadoColor.value = registro.colorBici || 'N/A';
                 resultadoNombre.value = registro.nombreUsuario || 'N/A';
 
-                // Mostrar las fotos si existen
                 if (registro.bicicleta_foto) {
                     // Si la URL de la foto de la bicicleta ya está en el QR, la mostramos
                     fotoBici.src = registro.bicicleta_foto; // URL de la foto de la bicicleta
@@ -80,8 +92,7 @@
                 alert("No se pudo procesar la información del QR.");
             }
         }
-
-
+        
         // Exponer la función salir() al objeto global window
         window.salir = function () {
             if (confirm("¿Estás seguro de que deseas salir?")) {

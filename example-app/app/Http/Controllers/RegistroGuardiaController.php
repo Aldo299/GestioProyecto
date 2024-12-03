@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registro;
+use App\Models\Guardia;
 use Illuminate\Http\Request;
 
 class RegistroGuardiaController extends Controller
@@ -11,7 +12,7 @@ class RegistroGuardiaController extends Controller
     public function index()
     {
         // Obtener todos los registros desde la base de datos (ajustar según sea necesario)
-        $registros = Registro::all();
+        $registros = Guardia::all();
 
         // Retornar la vista con los registros
         return view('registro_guardia', compact('registros'));

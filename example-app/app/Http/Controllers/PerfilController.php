@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PerfilController extends Controller
 {
@@ -35,15 +35,21 @@ class PerfilController extends Controller
 
         // Si se sube una nueva foto de perfil
         if ($request->hasFile('nuevoFotoPerfil')) {
-            $path = $request->file('nuevoFotoPerfil')->store('perfil_images', 'public'); // Guardar imagen
+            // Obtener el archivo de la foto
+            $file = $request->file('nuevoFotoPerfil');
+            $fileName = $user->no_control . '.' . $file->getClientOriginalExtension();  // Usar el ID del usuario como nombre del archivo
+
+            // Mover la imagen a 'public/image/perfil'
+            $file->move(public_path('image/perfil'), $fileName);  // Mueve la imagen a la carpeta 'public/image/perfil'
 
             // Eliminar la foto anterior si existe
-            if ($user->fotoUsuario) {
-                Storage::disk('public')->delete($user->fotoUsuario);
+            if ($user->fotoUsuario && file_exists(public_path('image/perfil/' . $user->fotoUsuario))) {
+                // Eliminar archivo anterior
+                File::delete(public_path('image/perfil/' . $user->fotoUsuario));
             }
 
             // Actualizar el campo correcto en la base de datos
-            $user->fotoUsuario = $path;  // Actualizar la foto de perfil
+            $user->fotoUsuario = $fileName;  // Actualizar la foto de perfil con el nuevo nombre
         }
 
         // Actualizar el nombre del usuario (si lo cambian)
@@ -53,6 +59,6 @@ class PerfilController extends Controller
 
         $user->save();  // Guardar los cambios en el usuario
 
-        return redirect()->route('perfil')->with('success', 'Perfil actualizado con éxito');
+        return redirect()->route('perfil')->with('success', 'Perfil actualizado exitosamente!');
     }
 }

@@ -28,13 +28,16 @@ class EscaneoQRController extends Controller
         }
 
         // Suponiendo que el nombre del archivo de la foto de la bicicleta está almacenado en la columna 'fotoBici'
-        $bicicletaFotoUrl = url('storage/bicicletas/' . $bicicleta->id_bicicleta . '.jpg'); // Foto de la bicicleta
+        $bicicletaFotoUrl = url($bicicleta->fotoBici ); // Foto de la bicicleta
 
         // Foto del usuario (asumimos que está en 'fotoUsuario')
-        $usuarioFotoUrl = url('storage/perfil_images/' . $usuario->fotoUsuario); // Foto del usuario
+        $usuarioFotoUrl = url('image/perfil/' . $usuario->fotoUsuario); // Foto del usuario
 
         // Datos que quieres codificar en el QR (URLs de las fotos y más información)
         $qrData = [
+            'noControl' => $bicicleta->no_control,
+            'colorBici' => $bicicleta->color,
+            'nombreUsuario' => $usuario->usuario,
             'bicicleta' => $bicicleta->nombrebici,
             'bicicleta_foto' => $bicicletaFotoUrl,
             'usuario_foto' => $usuarioFotoUrl,

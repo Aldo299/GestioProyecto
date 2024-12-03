@@ -71,11 +71,9 @@
                     <!-- Mostrar la imagen de perfil -->
                     <img id="previewPerfil" 
                         class="image-preview" 
-                        alt="Vista Previa de la Foto de Perfil"
-                        src="{{ $user->fotoUsuario ? asset('storage/' . $user->fotoUsuario) : asset('images/default-avatar.png') }}"
-
+                        alt="Todavía no ha cargado una foto de perfil, por favor sube una y guardala."
+                        src="{{ $user->fotoUsuario ? asset('image/perfil/' . $user->fotoUsuario) : asset('images/default-avatar.png') }}">
                 </div>
-
                 <!-- Íconos para Eliminar y Guardar -->
                 <div class="buttons">
                     <!-- Botón de Eliminar -->

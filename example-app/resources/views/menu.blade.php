@@ -79,8 +79,8 @@
                             <td>{{ $bicicleta->color }}</td>
                             <td>{{ $bicicleta->created_at->format('d/m/Y H:i') }}</td>
                             <td>
-                            <button class="codigo-qr" onclick="window.location.href='{{ route('codigoQR', ['id_bicicleta' => $bicicleta->id_bicicleta]) }}'">
-                                Código QR
+                            <button class="codigo-qr" onclick="window.location.href='{{ route('codigoQR', ['id_bicicleta' => $bicicleta->id_bicicleta]) }}'" style="background: none; border: none; cursor: pointer;">
+                                <img src="{{ asset('images/qr.svg') }}" alt="Codigo QR">
                             </button>
                             </td>
                         </tr>

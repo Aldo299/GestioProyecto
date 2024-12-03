@@ -159,6 +159,19 @@
                         <option value="Azul">Azul</option>
                         <option value="Verde">Verde</option>
                         <option value="Amarillo">Amarillo</option>
+                        <option value="Naranja">Naranja</option>
+                        <option value="Morado">Morado</option>
+                        <option value="Plata">Plata</option>
+                        <option value="Gris">Gris</option>
+                        <option value="Rosa">Rosa</option>
+                        <option value="Marrón">Marrón</option>
+                        <option value="Dorado">Dorado</option>
+                        <option value="Lima">Lima</option>
+                        <option value="Azul Marino">Azul Marino</option>
+                        <option value="Oxido">Oxido</option>
+                        <option value="Granate">Granate</option>
+                        <option value="Turquesa">Turquesa</option>
+                        <option value="Magenta">Magenta</option>
                     </select>
                 </div>
 

@@ -65,6 +65,16 @@
         function imprimirPagina() {
             window.print();
         }
+
+        function mostrarMantenimiento() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Página en mantenimiento',
+                text: 'Esta página está en mantenimiento, por favor intenta más tarde.',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#3085d6'
+            });
+        }
     </script>
 </head>
 

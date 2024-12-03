@@ -59,7 +59,7 @@
     <div class="sidebar">
         <div class="logo">Menú</div>
         <ul>
-            <li onclick="window.location.href='{{ route('escaneo.qr') }}'">
+            <li onclick="window.location.href='{{ route('escaneo-qr') }}'">
                 <img src="{{ asset('images/sacan.svg') }}" width="20" height="20" alt="Registros">
                 <span>Escaneo</span>
             </li>
